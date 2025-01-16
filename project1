@@ -1,0 +1,36 @@
+-- Create Employees Table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Department VARCHAR(50),
+    Salary DECIMAL(10,2),
+    HireDate DATE
+);
+
+-- Insert Sample Data
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Department, Salary, HireDate) VALUES
+(1, 'John', 'Doe', 'IT', 75000.00, '2020-05-15'),
+(2, 'Jane', 'Smith', 'HR', 68000.00, '2019-08-21'),
+(3, 'Alice', 'Johnson', 'Finance', 72000.00, '2021-03-10'),
+(4, 'Bob', 'Brown', 'IT', 80000.00, '2018-11-30');
+
+-- Retrieve Employees with Salary Above 70000
+SELECT EmployeeID, FirstName, LastName, Department, Salary
+FROM Employees
+WHERE Salary > 70000
+ORDER BY Salary DESC;
+
+-- Calculate Average Salary Per Department
+SELECT Department, AVG(Salary) AS AverageSalary
+FROM Employees
+GROUP BY Department;
+
+-- Update Employee Salary
+UPDATE Employees
+SET Salary = Salary * 1.05
+WHERE Department = 'IT';
+
+-- Delete Employees Hired Before 2019
+DELETE FROM Employees
+WHERE HireDate < '2019-01-01';
